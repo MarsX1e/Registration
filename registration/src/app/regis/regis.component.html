@@ -1,0 +1,18 @@
+<h1>Registration</h1>
+<p>{{success}}</p>
+<form #form="ngForm" name="form" (submit)="create()">
+  <p>*First Name:<input name="firstname" type="text" required minlength="2" [(ngModel)]="user.firstname" #firstname="ngModel"><span *ngIf="firstname.invalid&&firstname.errors.minlength">First name has to be at least 2 charactors</span></p>
+  <p>*Last Name:<input name="lastname" type="text" required minlength="2" [(ngModel)]="user.lastname" #lastname="ngModel"><span *ngIf="lastname.invalid&&lastname.errors.minlength">Last name has to be at least 2 charactors</span></p>
+  <p>*Email:<input name="email" type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"[(ngModel)]="user.email" #email="ngModel"><span *ngIf="email.invalid&&email.errors.pattern">Email is invalid</span></p>
+  <p>*Password:<input name="password" type="text" minlength="8"pattern="^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[`!*@#$%^&+=]).*$"[(ngModel)]="user.password" #password="ngModel"><span *ngIf="password.invalid&&password.errors.pattern">Password has to include at least one letter one number and one specialsymbol.</span><span *ngIf="password.invalid&&password.errors.minlength">Password has to be at least 8 charactors</span></p>
+  <p>*Password Confirmation:<input name="cwpassword" type="text" required pattern="{{user.password}}"[(ngModel)]="user.cwpassword" #cwpassword="ngModel"><span *ngIf="cwpassword.invalid&&cwpassword.errors.pattern">Confirm password has to be the same with Password.</span></p>
+
+  <p>*Street Address:<input name="streetaddress" type="text" required [(ngModel)]="user.streetaddress" #streetaddress="ngModel"><span *ngIf="streetaddress.invalid&&streetaddress.dirty">Strret Address can not be blank.</span></p>
+  <p>Unit/Apt #<input name="UnitApt" type="text"></p>
+  <p>*City:<input name="city" type="text" required [(ngModel)]="user.city" #city="ngModel"><span *ngIf="city.invalid&&city.dirty">City is required.</span></p>
+  <p>*State:<select name="state" required [(ngModel)]="user.state" #state="ngModel"><option>Alaska</option><option>Washington</option></select><span *ngIf="state.invalid&&statedirty">State can not be blank.</span></p>
+  <p>*I'm feeling lucky:<input type="radio" value="true" name="lucky" reuqired [(ngModel)]="user.lucky" #lucky="ngModel">Yes<input type="radio" value="false" name="lucky" required [(ngModel)]="user.lucky" #lucky="ngModel">No<span *ngIf="lucky.invalid&&lucky.dirty">Chooseing how you feel is required</span></p>
+  <p><input type="submit" value="Register" [disabled]="form.invalid"></p>
+</form>
+<p>{{firstname.invalid|json}}</p>
+<p>{{user|json}}</p>

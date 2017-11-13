@@ -1,0 +1,24 @@
+export class User {
+    firstname:string;
+    lastname:string;
+    email:string;
+    password:string;
+    cwpassword:string;
+    streetaddress:string;
+    UnitApt:string;
+    city:string;
+    state:string;
+    lucky:boolean;
+    constructor(){
+        this.firstname="";
+        this.lastname="";
+        this.email="";
+        this.password="";
+        this.cwpassword="";
+        this.streetaddress="";
+        this.UnitApt="";
+        this.city="";
+        this.state="";
+        this.lucky=null;
+    }
+}
